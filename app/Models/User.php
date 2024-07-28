@@ -58,10 +58,26 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function posts(){
+    public function posts()
+    {
         return $this->hasMany(Post::class);
     }
-    public function stories(){
+    public function stories()
+    {
         return $this->hasMany(Story::class);
+    }
+
+    public function friends()
+    {
+        return $this->belongsToMany(User::class, "friends", "user_id", "friend_id")
+            ->withPivot("status")
+            ->wherePivot("status", "accepted");
+    }
+
+    public function friendRequests()
+    {
+        return $this->belongsToMany(User::class, "friends", "friend_id", "user_id")
+            ->withPivot("status")
+            ->wherePivot("status", "pending");
     }
 }

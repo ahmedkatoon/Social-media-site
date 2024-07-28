@@ -61,17 +61,18 @@
                                             <ion-icon name="camera" class="text-2xl"></ion-icon>
                                         </div>
                                     </li>
-                                    @foreach ($stories as $story )
+                                    @foreach ($stories as $story)
 
-                                    <li class="md:pr-3 pr-2 hover:scale-[1.15] hover:-rotate-2 duration-300">
-                                        <a href="{{asset("storage/$story->image")}}" data-caption="{{$story->description}}">
-                                            <div
-                                                class="md:w-16 md:h-16 w-12 h-12 relative md:border-4 border-2 shadow border-white rounded-full overflow-hidden dark:border-slate-700">
-                                                <img src="{{asset("storage/$story->image")}}" alt=""
-                                                    class="absolute w-full h-full object-cover">
-                                            </div>
-                                        </a>
-                                    </li>
+                                        <li class="md:pr-3 pr-2 hover:scale-[1.15] hover:-rotate-2 duration-300">
+                                            <a href="{{ asset("storage/$story->image") }}"
+                                                data-caption="{{ $story->description }}">
+                                                <div
+                                                    class="md:w-16 md:h-16 w-12 h-12 relative md:border-4 border-2 shadow border-white rounded-full overflow-hidden dark:border-slate-700">
+                                                    <img src="{{ asset("storage/$story->image") }}" alt=""
+                                                        class="absolute w-full h-full object-cover">
+                                                </div>
+                                            </a>
+                                        </li>
                                     @endforeach
 
                                 </ul>
@@ -86,8 +87,8 @@
                                         class="text-2xl"></ion-icon></button>
                                 <button type="button"
                                     class="absolute -right-2 -translate-y-1/2 bg-white shadow rounded-full top-1/2 grid w-8 h-8 place-items-center dark:bg-dark3"
-                                    uk-slider-item="next"> <ion-icon name="chevron-forward"
-                                        class="text-2xl"></ion-icon> </button>
+                                    uk-slider-item="next"> <ion-icon name="chevron-forward" class="text-2xl"></ion-icon>
+                                </button>
 
                             </div>
 
@@ -387,180 +388,71 @@
                                 <h3 class="font-bold text-base"> People you may know </h3>
                                 <a href="#" class="text-sm text-blue-500">See all</a>
                             </div>
+                            @foreach ($peoples_may_know as $people_may_know)
 
-                            <div class="side-list">
+                                <div class="side-list">
 
-                                <div class="side-list-item">
-                                    <a href="timeline.html">
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt=""
-                                            class="side-list-image rounded-full">
-                                    </a>
-                                    <div class="flex-1">
+                                    <div class="side-list-item">
                                         <a href="timeline.html">
-                                            <h4 class="side-list-title"> John Michael </h4>
+                                            <img src="assets/images/avatars/avatar-2.jpg" alt=""
+                                                class="side-list-image rounded-full">
                                         </a>
-                                        <div class="side-list-info"> 125k Following </div>
+                                        <div class="flex-1">
+                                            <a href="timeline.html">
+                                                <h4 class="side-list-title"> {{ $people_may_know->first_name }}
+                                                    {{ $people_may_know->last_name }} </h4>
+                                            </a>
+                                            <div class="side-list-info"> 125k Following </div>
+                                        </div>
+                                        {{-- <button type="submit" class="button bg-primary-soft text-primary dark:text-white">follow</button> --}}
+                                        <a class="button bg-primary-soft text-primary dark:text-white"
+                                            href="{{ route('send_friend_request', $people_may_know->id) }}"> follw</a>
                                     </div>
-                                    <button class="button bg-primary-soft text-primary dark:text-white">follow</button>
+
+                                    {{-- <button class="bg-secondery button w-full mt-2 hidden">See all</button> --}}
+
                                 </div>
+                            @endforeach
 
-                                <div class="side-list-item">
-                                    <a href="timeline.html">
-                                        <img src="assets/images/avatars/avatar-3.jpg" alt=""
-                                            class="side-list-image rounded-full">
-                                    </a>
-                                    <div class="flex-1">
-                                        <a href="timeline.html">
-                                            <h4 class="side-list-title"> Monroe Parker </h4>
-                                        </a>
-                                        <div class="side-list-info"> 320k Following </div>
-                                    </div>
-                                    <button class="button bg-primary-soft text-primary dark:text-white">follow</button>
-                                </div>
+                        </div>
+                        <div class="box p-5 px-6">
 
-                                <div class="side-list-item">
-                                    <a href="timeline.html">
-                                        <img src="assets/images/avatars/avatar-5.jpg" alt=""
-                                            class="side-list-image rounded-full">
-                                    </a>
-                                    <div class="flex-1">
-                                        <a href="timeline.html">
-                                            <h4 class="side-list-title"> James Lewis</h4>
-                                        </a>
-                                        <div class="side-list-info"> 125k Following </div>
-                                    </div>
-                                    <button class="button bg-primary-soft text-primary dark:text-white">follow</button>
-                                </div>
-
-                                <div class="side-list-item">
-                                    <a href="timeline.html">
-                                        <img src="assets/images/avatars/avatar-6.jpg" alt=""
-                                            class="side-list-image rounded-full">
-                                    </a>
-                                    <div class="flex-1">
-                                        <a href="timeline.html">
-                                            <h4 class="side-list-title"> Alexa stella </h4>
-                                        </a>
-                                        <div class="side-list-info"> 192k Following </div>
-                                    </div>
-                                    <button class="button bg-primary-soft text-primary dark:text-white">follow</button>
-                                </div>
-
-                                <div class="side-list-item">
-                                    <a href="timeline.html">
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt=""
-                                            class="side-list-image rounded-full">
-                                    </a>
-                                    <div class="flex-1">
-                                        <a href="timeline.html">
-                                            <h4 class="side-list-title"> John Michael </h4>
-                                        </a>
-                                        <div class="side-list-info"> 320k Following </div>
-                                    </div>
-                                    <button class="button bg-primary-soft text-primary dark:text-white">follow</button>
-                                </div>
-
-                                <button class="bg-secondery button w-full mt-2 hidden">See all</button>
-
+                            <div class="flex items-baseline justify-between text-black dark:text-white">
+                                <h3 class="font-bold text-base"> Friendship requests </h3>
+                                <a href="#" class="text-sm text-blue-500">See all</a>
                             </div>
+                            @if ($friends_request->isEmpty())
+                                <p>No Friendship requests</p>
+                            @else
+                                <ul>
+                                    @foreach ($friends_request as $friend_request)
+                                        <li>
+                                            <a href="">{{ $friend_request->first_name }} {{ $friend_request->last_name }}</a>
+                                            {{-- <form action="{{ route('acceptRequest', $friend_request->id) }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                <button  type="submit">accept</button>
+                                            </form> --}}
+                                            <div>
+                                                <a class="button bg-primary-soft text-primary dark:text-white" href="{{ route('acceptRequest', $friend_request->id) }}">accept</a>
+                                                <a class="button bg-primary-soft text-primary dark:text-white" href="{{ route('declineRequest', $friend_request->id) }}">decline</a>
+                                            </div>
+                                            {{-- <form action="{{ route('declineRequest', $friend_request->id) }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit">decline</button>
+                                            </form> --}}
+
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
+
 
                         </div>
 
-                        <!-- peaple you might know -->
-                        <div class="box p-5 px-6 border1 dark:bg-dark2 hidden">
 
-                            <div class="flex justify-between text-black dark:text-white">
-                                <h3 class="font-bold text-base"> Peaple You might know </h3>
-                                <button type="button"> <ion-icon name="sync-outline" class="text-xl"></ion-icon>
-                                </button>
-                            </div>
-
-                            <div
-                                class="space-y-4 capitalize text-xs font-normal mt-5 mb-2 text-gray-500 dark:text-white/80">
-
-                                <div class="flex items-center gap-3">
-                                    <a href="timeline.html">
-                                        <img src="assets/images/avatars/avatar-7.jpg" alt=""
-                                            class="bg-gray-200 rounded-full w-10 h-10">
-                                    </a>
-                                    <div class="flex-1">
-                                        <a href="timeline.html">
-                                            <h4 class="font-semibold text-sm text-black dark:text-white"> Johnson smith
-                                            </h4>
-                                        </a>
-                                        <div class="mt-0.5"> Suggested For You </div>
-                                    </div>
-                                    <button type="button"
-                                        class="text-sm rounded-full py-1.5 px-4 font-semibold bg-secondery"> Follow
-                                    </button>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <a href="timeline.html">
-                                        <img src="assets/images/avatars/avatar-5.jpg" alt=""
-                                            class="bg-gray-200 rounded-full w-10 h-10">
-                                    </a>
-                                    <div class="flex-1">
-                                        <a href="timeline.html">
-                                            <h4 class="font-semibold text-sm text-black dark:text-white"> James Lewis
-                                            </h4>
-                                        </a>
-                                        <div class="mt-0.5"> Followed by Johnson </div>
-                                    </div>
-                                    <button type="button"
-                                        class="text-sm rounded-full py-1.5 px-4 font-semibold bg-secondery"> Follow
-                                    </button>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <a href="timeline.html">
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt=""
-                                            class="bg-gray-200 rounded-full w-10 h-10">
-                                    </a>
-                                    <div class="flex-1">
-                                        <a href="timeline.html">
-                                            <h4 class="font-semibold text-sm text-black dark:text-white"> John Michael
-                                            </h4>
-                                        </a>
-                                        <div class="mt-0.5"> Followed by Monroe </div>
-                                    </div>
-                                    <button type="button"
-                                        class="text-sm rounded-full py-1.5 px-4 font-semibold bg-secondery"> Follow
-                                    </button>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <a href="timeline.html">
-                                        <img src="assets/images/avatars/avatar-3.jpg" alt=""
-                                            class="bg-gray-200 rounded-full w-10 h-10">
-                                    </a>
-                                    <div class="flex-1">
-                                        <a href="timeline.html">
-                                            <h4 class="font-semibold text-sm text-black dark:text-white"> Monroe Parker
-                                            </h4>
-                                        </a>
-                                        <div class="mt-0.5"> Suggested For You </div>
-                                    </div>
-                                    <button type="button"
-                                        class="text-sm rounded-full py-1.5 px-4 font-semibold bg-secondery"> Follow
-                                    </button>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <a href="timeline.html">
-                                        <img src="assets/images/avatars/avatar-4.jpg" alt=""
-                                            class="bg-gray-200 rounded-full w-10 h-10">
-                                    </a>
-                                    <div class="flex-1">
-                                        <a href="timeline.html">
-                                            <h4 class="font-semibold text-sm text-black dark:text-white"> Martin Gray
-                                            </h4>
-                                        </a>
-                                        <div class="mt-0.5"> Suggested For You </div>
-                                    </div>
-                                    <button type="button"
-                                        class="text-sm rounded-full py-1.5 px-4 font-semibold bg-secondery"> Follow
-                                    </button>
-                                </div>
-                            </div>
-
-                        </div>
 
 
                         <!-- latest marketplace items -->
@@ -1415,8 +1307,8 @@
 
                     </div>
 
-                    <button type="submit"
-                        class="hidden text-sm rounded-full py-1.5 px-4 font-semibold bg-secondery"> Replay</button>
+                    <button type="submit" class="hidden text-sm rounded-full py-1.5 px-4 font-semibold bg-secondery">
+                        Replay</button>
 
                 </div>
 
@@ -1433,7 +1325,7 @@
 
     <!-- create story -->
 
-    @include("profile.partials.create_story")
+    @include('profile.partials.create_story')
 
 
 
